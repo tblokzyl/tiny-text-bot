@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, SlashCommandBuilder, InteractionFlags } = require('discord.js');
+const { Client, GatewayIntentBits, SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 require('dotenv').config();
 
 const client = new Client({
@@ -35,7 +35,7 @@ client.on('interactionCreate', async (interaction) => {
 
     await interaction.reply({
       content: `Here’s your tiny text: \n${tinyText}`,
-      flags: [InteractionFlags.FLAGS.EPHEMERAL], 
+      flags: 64,
     });
   }
 });
