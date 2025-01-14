@@ -31,7 +31,7 @@ client.on('interactionCreate', async (interaction) => {
 
     await interaction.reply({
       content: `Here’s your tiny text: \n${tinyText}`,
-      ephemeral: true,
+      flags: [InteractionFlags.FLAGS.EPHEMERAL],  // Use this for ephemeral messages
     });
   }
 });
