@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, SlashCommandBuilder } = require('discord.js');
+const { Client, GatewayIntentBits, SlashCommandBuilder, InteractionFlags } = require('discord.js');
 require('dotenv').config();
 
 const client = new Client({
@@ -8,7 +8,11 @@ const client = new Client({
     GatewayIntentBits.MessageContent],
 });
 
-const TOKEN = process.env.BOT_TOKEN;
+const localToken = process.env.BOT_TOKEN;
+
+const serverToken = process.env.SERVER_DISCORD_TOKEN;
+
+const TOKEN = localToken || serverToken;
 
 client.once('ready', () => {
   console.log('Bot is ready');
@@ -31,7 +35,7 @@ client.on('interactionCreate', async (interaction) => {
 
     await interaction.reply({
       content: `Here’s your tiny text: \n${tinyText}`,
-      flags: [InteractionFlags.FLAGS.EPHEMERAL],  // Use this for ephemeral messages
+      flags: [InteractionFlags.FLAGS.EPHEMERAL], 
     });
   }
 });
